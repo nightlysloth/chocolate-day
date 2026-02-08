@@ -1,0 +1,143 @@
+/* Base reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #fff0f3, #f7d9c4);
+  color: #4b2e2b;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* App layout */
+.app {
+  max-width: 420px;
+  margin: auto;
+  padding: 24px 16px 80px;
+  text-align: center;
+}
+
+/* Hero */
+.hero h1 {
+  font-size: 2rem;
+}
+.subtitle {
+  margin-top: 8px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Countdown */
+.countdown-section {
+  margin: 24px 0;
+}
+#countdown {
+  font-size: 1.2rem;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* Buttons */
+.cute-btn {
+  background: #8b4513;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 16px;
+  animation: bounce 2s infinite;
+}
+
+.cute-btn.small {
+  font-size: 0.9rem;
+  padding: 10px 18px;
+}
+
+.cute-btn:active {
+  transform: scale(0.95);
+}
+
+/* Cards */
+.cards-section {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  margin-top: 24px;
+  padding-bottom: 10px;
+}
+
+.card {
+  min-width: 220px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  font-size: 0.95rem;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  width: 85%;
+  max-width: 320px;
+  animation: pop 0.4s ease;
+}
+
+/* Floating hearts */
+.hearts span {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  animation: floatUp linear infinite;
+  opacity: 0.7;
+}
+
+/* Animations */
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.fade-in {
+  animation: fade 1s ease forwards;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility */
+.hidden {
+  display: none;
+}
