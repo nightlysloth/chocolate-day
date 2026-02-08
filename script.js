@@ -1,66 +1,47 @@
-/* Countdown to today at 12:00 AM */
-const countdownEl = document.getElementById("countdown");
+// 1. Countdown Logic
+const targetDate = new Date("February 9, 2026 00:00:00").getTime();
 
-function updateCountdown() {
-  const now = new Date();
-  const target = new Date();
-  target.setHours(0, 0, 0, 0);
+const timerInterval = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-  const diff = target - now;
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  if (diff <= 0) {
-    countdownEl.textContent = "It’s Chocolate Time 🍫💖";
-    return;
-  }
+    document.getElementById("timer").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
 
-  const h = Math.floor(diff / (1000 * 60 * 60));
-  const m = Math.floor((diff / (1000 * 60)) % 60);
-  const s = Math.floor((diff / 1000) % 60);
+    if (distance < 0) {
+        clearInterval(timerInterval);
+        document.getElementById("timer").innerHTML = "IT'S CHOCOLATE DAY! 🍫";
+        document.getElementById("start-btn").classList.remove("hidden");
+    }
+}, 1000);
 
-  countdownEl.textContent = `${h}h ${m}m ${s}s`;
-}
-setInterval(updateCountdown, 1000);
-updateCountdown();
+// For testing: Uncomment the line below to skip countdown
+// document.getElementById("start-btn").classList.remove("hidden");
 
-/* Floating hearts generator */
-const heartsContainer = document.querySelector(".hearts");
-
-setInterval(() => {
-  const heart = document.createElement("span");
-  heart.textContent = "💖";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = 4 + Math.random() * 3 + "s";
-  heartsContainer.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 7000);
-}, 600);
-
-/* Surprise logic */
-const btn1 = document.getElementById("btn1");
-const cards = document.getElementById("cards");
-const secondBtn = document.getElementById("secondBtn");
-
-btn1.addEventListener("click", () => {
-  cards.classList.remove("hidden");
-  secondBtn.classList.remove("hidden");
-  showModal("🍫 Surprise! I wish I could give you a chocolate hug right now 💕");
-});
-
-/* Second surprise */
-secondBtn.querySelector("button").addEventListener("click", () => {
-  showModal("🥰 Fun fact: Every chocolate reminds me of you — sweet, addictive, and impossible to ignore.");
-});
-
-/* Modal */
-const modal = document.getElementById("modal");
-const modalText = document.getElementById("modalText");
-const closeModal = document.getElementById("closeModal");
-
-function showModal(text) {
-  modalText.textContent = text;
-  modal.classList.remove("hidden");
+// 2. Navigation Logic
+function nextSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+    document.getElementById(id).classList.add('active');
+    createHearts();
 }
 
-closeModal.addEventListener("click", () => {
-  modal.classList.add("hidden");
-});
+function resetGame() {
+    nextSection('hero');
+}
+
+// 3. Eye-Candy: Floating Hearts
+function createHearts() {
+    for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        document.getElementById('heart-container').appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+}
