@@ -1,58 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Chocolate Day 🍫</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Sweetest Swara 🍫</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="heart-container"></div>
 
-  <!-- Floating hearts container -->
-  <div class="hearts"></div>
-
-  <!-- Main container -->
-  <main class="app">
-
-    <!-- Hero -->
-    <section class="hero fade-in">
-      <h1>Happy Chocolate Day 🍫</h1>
-      <p class="subtitle">A tiny chocolate-filled surprise… just for you 💖</p>
+    <section id="hero" class="active">
+        <div class="glass-card">
+            <h1>Hi Swara! ❤️</h1>
+            <p>Something sweet is melting...</p>
+            <div id="timer">00:00:00:00</div>
+            <button id="start-btn" class="hidden" onclick="nextSection('story-1')">Open Your Surprise 🎁</button>
+        </div>
     </section>
 
-    <!-- Countdown -->
-    <section class="countdown-section fade-in">
-      <p class="countdown-label">Chocolate Day moment 💕</p>
-      <div id="countdown">Loading…</div>
+    <section id="story-1" class="hidden">
+        <div class="meme-card">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYycWp4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUsHD9H/giphy.gif" alt="Cute Meme">
+            <p>"Life without you is like a chocolate chip cookie without the chips... basically just bread. And I hate bread."</p>
+            <button onclick="nextSection('story-2')">Next Piece 🍫</button>
+        </div>
     </section>
 
-    <!-- First surprise -->
-    <section class="section fade-in">
-      <button class="cute-btn" id="btn1">Click me 💕</button>
+    <section id="story-2" class="hidden">
+        <div class="meme-card">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHYycWp4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3oxHQp9Ddg9kF6AUKs/giphy.gif" alt="Chocolate Meme">
+            <p>Since August 3, 2025, you've been the sugar in my life! (And sometimes the spice 🌶️)</p>
+            <button onclick="nextSection('final')">The Sweetest Part ✨</button>
+        </div>
     </section>
 
-    <!-- Meme cards -->
-    <section class="cards-section hidden" id="cards">
-      <div class="card">🍫 Me + You = Unlimited Chocolates</div>
-      <div class="card">💖 You’re sweeter than any chocolate</div>
-      <div class="card">🥰 Warning: Cuteness overload ahead</div>
+    <section id="final" class="hidden">
+        <div class="glass-card">
+            <h2>Happy Chocolate Day, Swara! 🍫</h2>
+            <p>You are more addictive than dark chocolate and sweeter than milk chocolate. I love you!</p>
+            <div class="floating-chocs">🍫💖🍬💖🍭</div>
+            <button onclick="resetGame()">Read Again? 🥰</button>
+        </div>
     </section>
 
-    <!-- Second surprise -->
-    <section class="section hidden" id="secondBtn">
-      <button class="cute-btn">One more surprise 🍫</button>
-    </section>
-
-  </main>
-
-  <!-- Modal -->
-  <div class="modal hidden" id="modal">
-    <div class="modal-content">
-      <p id="modalText"></p>
-      <button class="cute-btn small" id="closeModal">Aww 🥰</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
